@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.navbar {
+    border-radius: 0;
+}
+.navbar li a {
+    font-size: 1.4em;
+}
+main.container-fluid h1 {
+    padding: 0.5em ;
+    margin-bottom: 2em;
+}
+#main_content {
+    padding: 0.2em 3em 1em 3em;
+    margin-bottom: 3em;
+}
+#main_content h2 {
+    margin-top: 1em;
+}
+#main_content p:nth-of-type(3n) {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 2em;
+}
+#main_content p:last-of-type {
+    border-bottom: none;
+    padding-bottom: 2em;
+}
+#go-to-optional {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    line-height: 1.7;
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(0,0,0,0.7);
+    border-radius: 5px;
+    padding: 0.2em;
+    z-index: 9999;
+}
+#go-to-optional .glyphicon {
+    font-size: 2em;
+    padding-left: 1.3em;
+}
