@@ -2,15 +2,110 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="../../assets/libraries/bootstrap-4.5.0/css/bootstrap.min.css" type='text/css' media='all'>
+  <link rel="stylesheet" href="../../assets/libraries/fontawesome/css/all.css" type='text/css' media='all'>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <title>Module 4 Solution Starter</title>
+  <script src="../../assets/libraries/jquery-3.5.1.min.js"></script>
+  <script src="../../assets/libraries/bootstrap-4.5.0/js/bootstrap.min.js"></script>
   <script>
     var names = []; // DO NOT REMOVE
   </script>
   <script src="SpeakHello.js"></script>
   <script src="SpeakGoodBye.js"></script>
   <script src="script.js"></script>
+  <style>
+    h1, p {
+      text-align: center;
+    }
+    ul#myList {
+      list-style-type: none;
+      font-size: 1.3em;
+    }
+    li.hello {
+      font-family: 'Poppins', sans-serif;
+    }
+    li.hello:before {
+      content: "\2660";
+      margin-right: 1em;
+      color: #00b300;
+    }
+    li.bye:before {
+      content: "\2666";
+      margin-right: 0.85em;
+      color: #800000;
+    }
+  </style>
 </head>
 <body>
   <h1>Module 4 Solution Starter</h1>
+  <p>
+    console.log solution works as intented. You can also click on the <strong class="text-success">Create List</strong> 
+    button to create a list with the same information and the <strong class="text-danger">Clear List</strong> button
+    to delete that list.
+  </p>
+  <p class="button-wrapper">
+    <button href="#" class="btn btn-success" id="createButton" onclick = 'createList()'>Create List</button>&nbsp;
+    <button href="#" class="btn btn-danger" onclick = 'destroyList()'>Clear List</button>
+  </p>
+  <ul id="myList">
+
+  </ul>
+
+  <script>
+    
+  (function(window) {
+    var helloSpeaker = {};
+    var speakWord = "Hello";
+
+    helloSpeaker.speak = function(someName) {
+      var node = document.createElement("LI");
+      var textnode = document.createTextNode(speakWord + " " + someName);
+      node.appendChild(textnode);
+      document.getElementById("myList").appendChild(node);
+      node.setAttribute("class", "hello");
+    }
+
+    window.helloSpeaker = helloSpeaker;
+  })(window);
+
+  (function(window) {
+    var byeSpeaker = {};
+    var speakWord = "Good Bye";
+
+    byeSpeaker.speak = function(someName) {
+      var node = document.createElement("LI");
+      var textnode = document.createTextNode(speakWord + " " + someName);
+      node.appendChild(textnode);
+      document.getElementById("myList").appendChild(node);
+      node.setAttribute("class", "bye");
+    }
+
+    window.byeSpeaker = byeSpeaker;
+  })(window);
+
+function createList() {
+  document.getElementById("createButton").disabled = true; 
+  (function(window) {
+    var names = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
+    for ( var i = 0; i < names.length; i++) {
+      var firstLetter = names[i].charAt(0).toLowerCase();
+      if ( firstLetter == "j") {
+        byeSpeaker.speak(names[i]);
+      } else {
+        helloSpeaker.speak(names[i]);
+      }
+    }
+  })(window);
+}
+
+function destroyList() {
+  document.getElementById("createButton").disabled = false; 
+  var myList = document.getElementById('myList');
+  myList.innerHTML = '';
+}
+
+  </script>
 </body>
 </html>
